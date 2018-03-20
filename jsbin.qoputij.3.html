@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2018 by noramayer (http://jsbin.com/qoputij/3/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+<meta name="description" content="Színóra">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Színóra</title>
+  <link href="https://fonts.googleapis.com/css?family=Muli:600" rel="stylesheet">
+<style id="jsbin-css">
+html, body {
+  height: 100%;
+}
+
+#clock {
+  text-align: center;
+  color: #ffffff;
+  position: relative;
+  bottom: -50%;
+  font-family: 'Muli', sans-serif;
+  font-size: 50px;
+  margin-top: -25px;
+  border-radius: 25px;
+  border: 2px solid #ffffff;
+  padding: 20px;
+}
+</style>
+</head>
+<body>
+  <div id="clock">12:13:14</div>
+<script id="jsbin-javascript">
+function colorClock(){
+  var date = new Date();
+  var hours = date.getHours();
+  var minutes = date.getMinutes();
+  var seconds = date.getSeconds();
+  if (hours < 10) {
+  hours = '0' + hours;
+  }
+  if (minutes < 10) {
+  minutes = '0' + minutes;
+  }
+  if (seconds < 10) {
+  seconds = '0' + seconds;
+  }
+  var hexColor = '#' + (seconds % 9) + (seconds % 9) + (seconds % 6)+(seconds % 6) + (seconds % 3) + (seconds % 3) ;
+  console.log (hexColor);
+  var clockFace = hours + ':' + minutes + ':' + seconds;
+  document.getElementById('clock').innerHTML = clockFace;
+ setTimeout(function() {
+  colorClock();
+  }, 1000);
+  document.body.style.background = hexColor;
+}
+colorClock();
+</script>
+</body>
+</html>
